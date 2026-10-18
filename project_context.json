@@ -1,0 +1,128 @@
+{
+  "project_metadata": {
+    "name": "Jomir Dalal AI",
+    "name_bn": "জমির দালাল এআই",
+    "tagline": "জমির আসল সত্য জানতে, আপনার বিশ্বস্ত ডিজিটাল সহকারী",
+    "track": "Digital Land Records, Verification & Digitization",
+    "problem_statements": [
+      "P5: Check Before You Buy",
+      "P3: Catch Fraud & Double-Selling"
+    ],
+    "competition": "LandTech 2026",
+    "institution": "Daffodil International University"
+  },
+  "project_overview": {
+    "concept_summary": "An AI-powered Land Copilot and Audit Engine tailored for Bangladesh land administration. It simplifies traditional Bangla Khatian fractional math (Ana, Gonda, Kara, Kranti), performs inheritance (Farai'd) co-sharer risk audits, and generates an instant 'Land Truth Scorecard' to prevent land fraud before transactions.",
+    "value_proposition": "Replaces opaque middleman processes with an objective, transparent, and accessible AI assistant that exposes mathematical share errors and hidden co-sharer exclusions in Bangla land records."
+  },
+  "core_features": [
+    {
+      "id": "F1_OCR_EXTRACTION",
+      "name": "Bangla Khatian OCR & Structured Extraction",
+      "description": "Extracts raw text from scanned Bangla Khatian documents (CS, SA, RS, BS) using Gemini 1.5 Flash multimodal vision API and formats output into structured JSON.",
+      "inputs": ["Scanned Bangla Khatian image or PDF"],
+      "outputs": [
+        "Khatian Number",
+        "Mouza / Dag (Plot) Number",
+        "Owner Name(s)",
+        "Fractional Share Text (e.g., ৪ আনা ৮ গণ্ডা)",
+        "Total Land Decimal Area"
+      ]
+    },
+    {
+      "id": "F2_ANA_GONDA_MATH",
+      "name": "Ana-Gonda Fractional Share Math Engine",
+      "description": "Converts traditional Bangladeshi land measurement units into exact decimals and ownership percentages.",
+      "conversion_formula": {
+        "base_unit": "16 Ana = 1 Full Share (100% or 1.0)",
+        "subdivisions": "1 Ana = 20 Gonda | 1 Gonda = 4 Kara | 1 Kara = 3 Kranti | 1 Kranti = 20 Til",
+        "total_til_in_16_ana": 57600
+      },
+      "outputs": ["Exact Decimal Share", "Ownership Percentage"]
+    },
+    {
+      "id": "F3_FARAID_INHERITANCE_AUDIT",
+      "name": "Farai'd Inheritance & Co-Sharer Audit Engine",
+      "description": "Calculates legal heir shares based on Islamic/Hindu inheritance rules and cross-checks against current seller share to detect un-mutated or illegally excluded co-sharer portions.",
+      "inputs": [
+        "Deceased Owner Total Share",
+        "Family Tree / Heirs Breakdown (Spouse, Sons, Daughters)"
+      ],
+      "outputs": [
+        "Calculated Share Per Heir",
+        "Missing Heirs / Excluded Co-Sharers List",
+        "Inheritance Fraud Risk Flag"
+      ]
+    },
+    {
+      "id": "F4_LAND_TRUTH_SCORECARD",
+      "name": "Land Truth Scorecard (1-Page Diagnostic)",
+      "description": "Generates a clear visual diagnostic report with color-coded risk indicators for citizens, banks, and sub-registry offices.",
+      "status_levels": {
+        "GREEN": "Clear Title: Mathematical share matches and all legal heirs/co-sharers are accounted for.",
+        "YELLOW": "Minor Warning: Minor fractional rounding discrepancy or pending mutation.",
+        "RED": "High Risk: Excluded legal heirs, un-mutated ancestral share, or over-allocation risk."
+      }
+    }
+  ],
+  "technical_architecture": {
+    "frontend": {
+      "framework": "React / Next.js or Streamlit UI",
+      "styling": "Tailwind CSS",
+      "key_components": [
+        "KhatianUploader.jsx",
+        "AnaGondaConverter.jsx",
+        "HeirTreeBuilder.jsx",
+        "ScorecardDisplay.jsx"
+      ]
+    },
+    "backend": {
+      "framework": "Python FastAPI",
+      "core_modules": [
+        "ocr_extractor.py",
+        "khatian_math.py",
+        "faraid_engine.py",
+        "scorecard_generator.py"
+      ]
+    },
+    "ai_services": {
+      "multimodal_ocr": "Google AI Studio API (Gemini 1.5 Flash) with Structured JSON Output mode",
+      "coding_assistants": "Claude 3.5 Sonnet / Antigravity"
+    },
+    "database": "SQLite / PostgreSQL (for dummy Khatians and synthetic family trees)"
+  },
+  "dummy_dataset_schema": {
+    "rulebook_compliance": "Zero scraping of live government portals, zero real NIDs or personal data. Uses synthetic benchmark records.",
+    "sample_record": {
+      "khatian_no": "102",
+      "mouza": "Dhanmondi",
+      "dag_no": "405",
+      "total_area_decimal": 10.0,
+      "owners": [
+        {
+          "owner_id": "OWN-001",
+          "name": "Md. Rahat Ali",
+          "share_text": "৪ আনা ৮ গণ্ডা",
+          "share_breakdown": {
+            "ana": 4,
+            "gonda": 8,
+            "kara": 0,
+            "kranti": 0
+          },
+          "calculated_decimal": 2.75
+        }
+      ],
+      "family_tree": {
+        "deceased_owner": "Md. Rahat Ali",
+        "heirs": [
+          {"relation": "Wife", "count": 1},
+          {"relation": "Son", "count": 2},
+          {"relation": "Daughter", "count": 1}
+        ]
+      }
+    }
+  },
+  "prompts_for_ai_coding_assistants": {
+    "system_prompt": "You are building 'Jomir Dalal AI', an AI-powered land record audit tool for Bangladesh under LandTech 2026. Use Python FastAPI for the backend, Gemini 1.5 Flash API for Bangla Khatian OCR extraction into structured JSON, implement Ana-Gonda math conversion algorithms (16 Ana = 100%), Farai'd inheritance rules, and generate a 1-page Land Truth Scorecard output with Green/Yellow/Red risk ratings."
+  }
+}
