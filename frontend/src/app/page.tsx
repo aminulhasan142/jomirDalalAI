@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   FileText,
   Calculator,
@@ -12,6 +13,7 @@ import {
   Sparkles,
   FileCheck,
   Award,
+  CheckCircle2,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -83,60 +85,134 @@ export default function HomePage() {
   return (
     <div className="w-full flex flex-col items-center">
       {/* 1. Hero Section */}
-      <section className="w-full py-20 sm:py-24 bg-white px-4 sm:px-6 lg:px-8 border-b border-gray-100">
-        <div className="container mx-auto max-w-4xl text-center space-y-6">
-          <div className="flex items-center justify-center">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
-              <Award className="w-3.5 h-3.5" />
-              এআই-চালিত ভূমি রেকর্ড অডিট ইঞ্জিন
-            </span>
-          </div>
+      <section className="w-full py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-white via-emerald-50/20 to-white px-4 sm:px-6 lg:px-8 border-b border-gray-100 overflow-hidden">
+        <div className="container mx-auto max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+            
+            {/* Left Content Column */}
+            <div className="lg:col-span-7 text-left space-y-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
+                <Award className="w-4 h-4 text-emerald-600" />
+                <span>এআই-চালিত ভূমি রেকর্ড অডিট ইঞ্জিন • LandTech 2026</span>
+              </div>
 
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-black text-gray-900 tracking-tight leading-tight">
-            জমির দালাল AI
-          </h1>
+              <div className="space-y-3">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 tracking-tight leading-[1.15]">
+                  জমির দালাল AI
+                </h1>
+                <p className="text-xl sm:text-2xl text-emerald-800 font-bold leading-snug">
+                  জমির আসল সত্য জানতে, আপনার বিশ্বস্ত ডিজিটাল সহকারী
+                </p>
+              </div>
 
-          <p className="text-xl sm:text-2xl text-gray-600 font-medium max-w-2xl mx-auto leading-relaxed">
-            জমির আসল সত্য জানতে, আপনার বিশ্বস্ত ডিজিটাল সহকারী
-          </p>
+              <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-2xl">
+                বাংলাদেশের প্রচলিত খতিয়ান (CS, SA, RS, BS) ও পর্চার জটিল আনা-গণ্ডা ভগ্নাংশ হিসাব, উত্তরাধিকার ফারায়েজ যাচাই ও ল্যান্ড ট্রুথ স্কোরকার্ডের মাধ্যমে জমি প্রতারণা ও ভুয়া বিক্রেতা প্রতিরোধের নিরাপদ সমাধান।
+              </p>
 
-          <p className="text-sm sm:text-base text-gray-500 max-w-2xl mx-auto leading-relaxed">
-            বাংলাদেশের জটিল ভূমি পর্চার আনা-গণ্ডা হিসাব, ফারায়েজ উত্তরাধিকার যাচাই এবং ল্যান্ড ট্রুথ স্কোরকার্ডের মাধ্যমে জমি প্রতারণা ও ভুয়া বিক্রেতা প্রতিরোধের এআই সমাধান।
-          </p>
+              {/* 3 Main CTA Buttons */}
+              <div className="flex flex-wrap items-center gap-3 pt-2">
+                <Link href="/upload">
+                  <Button
+                    size="lg"
+                    className="bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-6 py-5 rounded-xl shadow-md text-base gap-2"
+                  >
+                    <Upload className="w-5 h-5" />
+                    খতিয়ান আপলোড করুন
+                  </Button>
+                </Link>
 
-          {/* 3 Main CTA Buttons */}
-          <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
-            <Link href="/upload">
-              <Button
-                size="lg"
-                className="bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-7 py-6 rounded-xl shadow-sm text-base"
-              >
-                <Upload className="w-5 h-5 mr-2" />
-                খতিয়ান আপলোড করুন
-              </Button>
-            </Link>
+                <Link href="/converter">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="border-gray-300 bg-white hover:bg-gray-50 text-gray-800 font-semibold px-5 py-5 rounded-xl shadow-xs text-sm sm:text-base gap-2"
+                  >
+                    <Calculator className="w-4 h-4 text-emerald-700" />
+                    আনা-গণ্ডা কনভার্টার
+                  </Button>
+                </Link>
 
-            <Link href="/converter">
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-gray-300 bg-white hover:bg-gray-50 text-gray-800 font-bold px-7 py-6 rounded-xl shadow-sm text-base"
-              >
-                <Calculator className="w-5 h-5 mr-2 text-emerald-700" />
-                আনা-গণ্ডা কনভার্টার
-              </Button>
-            </Link>
+                <Link href="/inheritance">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="border-emerald-600 bg-emerald-50/50 hover:bg-emerald-100 text-emerald-800 font-semibold px-5 py-5 rounded-xl shadow-xs text-sm sm:text-base gap-2"
+                  >
+                    <Users className="w-4 h-4 text-emerald-700" />
+                    ফারায়েজ অডিট
+                  </Button>
+                </Link>
+              </div>
 
-            <Link href="/inheritance">
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-emerald-600 bg-white hover:bg-emerald-50 text-emerald-700 font-bold px-7 py-6 rounded-xl shadow-sm text-base"
-              >
-                <Users className="w-5 h-5 mr-2" />
-                উত্তরাধিকার ক্যালকুলেটর
-              </Button>
-            </Link>
+              {/* Trust Indicators */}
+              <div className="pt-4 border-t border-gray-100 flex flex-wrap items-center gap-y-2 gap-x-6 text-xs sm:text-sm font-medium text-gray-500">
+                <div className="flex items-center gap-1.5 text-emerald-800">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  <span>CS, SA, RS ও BS পর্চা সমর্থিত</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-emerald-800">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  <span>১৬ আনা শতভাগ নির্ভুল ফ্র্যাকশন ম্যাপিং</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-emerald-800">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  <span>ইনস্ট্যান্ট ল্যান্ড ট্রুথ স্কোরকার্ড</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: 2D Relatable Illustration & Interactive Badges */}
+            <div className="lg:col-span-5 relative flex items-center justify-center">
+              {/* Subtle ambient emerald glow */}
+              <div className="absolute -inset-4 bg-gradient-to-tr from-emerald-500/15 via-teal-400/10 to-amber-400/15 rounded-3xl blur-2xl -z-10 pointer-events-none" />
+
+              <div className="relative w-full max-w-lg lg:max-w-none rounded-2xl bg-white p-2.5 sm:p-3.5 border border-emerald-100 shadow-xl shadow-emerald-900/5 group">
+                <div className="relative overflow-hidden rounded-xl bg-slate-50 border border-slate-100 aspect-[4/3]">
+                  <Image
+                    src="/hero-illustration.jpg"
+                    alt="জমির দালাল AI এআই-চালিত ভূমি রেকর্ড অডিট ও বিশ্লেষণ"
+                    fill
+                    priority
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
+                    className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.02]"
+                  />
+                  
+                  {/* Floating Relatable Badge 1: Top-Left Truth Score */}
+                  <div className="absolute top-3 left-3 sm:top-4 sm:left-4 bg-white/95 backdrop-blur-md border border-emerald-200/90 rounded-xl px-3 py-1.5 shadow-md flex items-center gap-2">
+                    <div className="w-6 h-6 rounded-md bg-emerald-600 flex items-center justify-center text-white font-extrabold text-[11px] shadow-xs">
+                      ৯৪
+                    </div>
+                    <div className="text-left">
+                      <p className="text-[10px] font-semibold text-emerald-800 uppercase tracking-wider leading-none">ট্রুথ স্কোর</p>
+                      <p className="text-xs font-bold text-gray-900 leading-tight">ঝুঁকিমুক্ত খতিয়ান</p>
+                    </div>
+                  </div>
+
+                  {/* Floating Relatable Badge 2: Bottom-Right Plot & Ana */}
+                  <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 bg-white/95 backdrop-blur-md border border-gray-200/90 rounded-xl px-3 py-2 shadow-md flex items-center gap-2.5">
+                    <div className="w-7 h-7 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-700">
+                      <ShieldCheck className="w-4 h-4" />
+                    </div>
+                    <div className="text-left">
+                      <p className="text-[10px] font-medium text-gray-500 leading-none">দাগ ও অংশ যাচাই</p>
+                      <p className="text-xs font-bold text-emerald-900 leading-tight">১৬ আনা নির্ভুল অডিট</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bottom caption micro-bar */}
+                <div className="mt-2.5 px-2 flex items-center justify-between text-xs text-gray-500">
+                  <span className="flex items-center gap-1 font-medium text-emerald-700">
+                    <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+                    ডিজিটাল মৌজা ম্যাপ ও দাগ নম্বর লিঙ্কড
+                  </span>
+                  <span className="hidden sm:inline text-gray-400">
+                    সরকার-স্বীকৃত রেকর্ড ফর্ম্যাট
+                  </span>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
