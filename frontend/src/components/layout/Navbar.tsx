@@ -22,14 +22,11 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-        {/* Left: Logo + App Name + Badge */}
+        {/* Left: Logo + App Name */}
         <Link href="/" className="flex items-center space-x-2.5">
           <LandPlot className="w-7 h-7 text-emerald-700" size={28} />
           <span className="text-lg font-bold text-gray-900 tracking-tight">
             জমির দালাল AI
-          </span>
-          <span className="rounded px-1.5 py-0.5 text-[10px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200/60">
-            LandTech &apos;26
           </span>
         </Link>
 
