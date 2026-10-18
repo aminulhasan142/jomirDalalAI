@@ -1,5 +1,3 @@
-import React from "react";
-
 export function Footer() {
   return (
     <footer className="w-full bg-gray-50 border-t border-gray-200 py-8 mt-auto">
@@ -15,9 +13,9 @@ export function Footer() {
             </span>
           </div>
 
-          {/* Right: LandTech 2026 • Daffodil International University */}
-          <div className="text-gray-500 text-sm text-center md:text-right">
-            LandTech 2026 • Daffodil International University
+          <div className="text-gray-400 text-sm text-center md:text-right">
+            <i>Developed By </i>
+            <span className="text-gray-500 font-bold">TeamVoid</span>
           </div>
         </div>
 
